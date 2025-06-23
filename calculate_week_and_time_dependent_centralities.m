@@ -68,6 +68,16 @@ function calculate_time_dependency_table_and_plot(A_1, A_2, A_3, A_4, A_5, A_wee
 
     filePath = "plots/time_dependency.png";
     exportgraphics(f,filePath,'Resolution',300);
+    
+    f2 = figure;
+    plot(c_min_day, 'DisplayName','c_{min}(day)')
+    hold on
+    plot(c_min_week, 'DisplayName','c_{min}(week)')
+    hold off
+    legend()
+
+    filePath = "plots/time_dependency_centralities.png";
+    exportgraphics(f2,filePath,'Resolution',300);
 end
 
 function time_dependent_table = create_time_dependent_table(alphas, rel_errors)
