@@ -52,21 +52,17 @@ function calculate_time_dependency_table_and_plot(A_1, A_2, A_3, A_4, A_5, A_wee
     
     saveTable(time_dependent_table, "time_dependence")
 
+
     f = figure;
-    plot(time_dependent_table{1,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]}, 'DisplayName','c_{min}(day)')
-    hold on
-    plot(time_dependent_table{2,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]},'DisplayName','c_{05}(day)')
-    plot(time_dependent_table{3,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]},'DisplayName','c_{085}(day)')
-    plot(time_dependent_table{4,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]},'DisplayName','c_{min}(week)')
-    plot(time_dependent_table{5,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]},'DisplayName','c_{05}(week)')
-    plot(time_dependent_table{6,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]},'DisplayName','c_{085}(week)')
-    hold off
-    ylim([0,1.5])
+    bar(time_dependent_table{:,["tau_top","tau_1","rho_top","rho_1","r_top","r_1"]}')
+    ylim([0,1.1])
+    yticks([0.5, 1])
+    xlim([0 9])
     xticks([1 2 3 4 5 6])
     xticklabels({'\tau_{top}','\tau_1','\rho_{top}','\rho_1','r_{top}','r_1'})
-    legend()
+    legend({'c_{min}(day)','c_{05}(day)', 'c_{085}(day)','c_{min}(week)','c_{05}(week)','c_{085}(week)'})
 
-    filePath = "plots/time_dependency.png";
+    filePath = "plots/time_dependency_correlations.png";
     exportgraphics(f,filePath,'Resolution',300);
     
     f2 = figure;
